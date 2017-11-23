@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lab 1 for Backbone.js</title>
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/backbone-min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        'use strict';
+
+        var HelloWorld = Backbone.Model.extend({
+            helloWorld: function() {
+                alert("Hello Backbone World!");
+            }
+        });
+
+        var app = new HelloWorld();
+
+        app.helloWorld();
+
+    </script>
+</body>
+</html>
