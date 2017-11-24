@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lab 2 for Backbone.js</title>
+    <script src="../lib/underscore-min.js"></script>
+    <script src="../lib/backbone-min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        'use strict';
+
+        var LicensePlate = Backbone.Model.extend({});
+
+        var plate = new LicensePlate({
+            "_id": "5a0c8ab22d8dc1f7fa170c9d",
+            "onSale": false,
+            "picture": "http://angulartraining.com/plates/GA.jpg",
+            "title": "2008 Georgia license plate",
+            "price": 8,
+            "year": 2008,
+            "state": "GA",
+            "description": "A beautiful plate from the peach state"
+        });
+
+        alert("License plate created with title: " + plate.get('title'));
+    </script>
+</body>
+</html>
