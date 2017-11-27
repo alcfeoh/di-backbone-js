@@ -13,6 +13,15 @@
     <script type="text/javascript">
         'use strict';
 
+        var HelloWorld = Backbone.Model.extend({
+            defaults: {
+                message: "Backbone World"
+            },
+            helloWorld: function() {
+                return "Hello "+ this.get('message') +"!";
+            }
+        });
+
         <!-- Write your Backbone code here -->
     </script>
 </body>

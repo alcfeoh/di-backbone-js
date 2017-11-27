@@ -13,6 +13,17 @@
     <script type="text/javascript">
         'use strict';
 
+        var HelloWorld = Backbone.Model.extend({
+            defaults: {
+                message: "Backbone World"
+            },
+            helloWorld: function() {
+                return "Hello "+ this.get('message') +"!";
+            }
+        });
+
+        var model = new HelloWorld();
+
         var HelloWorldView = Backbone.View.extend({
             // el - stands for element. Every view has a element associate in with HTML
             //      content will be rendered.
@@ -24,11 +35,11 @@
             // $el - it's a cached jQuery object (el), in which you can use jQuery functions
             //       to push content. Like the Hello World in this case.
             render: function(){
-                this.$el.html("Hello Backbone World");
+                this.$el.html(this.model.helloWorld());
             }
         });
 
-        var app = new HelloWorldView();
+        var app = new HelloWorldView({ model: model});
     </script>
 </body>
 </html>
