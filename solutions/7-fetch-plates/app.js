@@ -20,7 +20,7 @@ $(function() {
 
     var LicensePlateList = Backbone.Collection.extend({
         model: LicensePlate,
-        url: 'http://localhost:8080/plates.json'
+        url: 'http://localhost:8000/data'
     });
 
     var plateList = new LicensePlateList();
