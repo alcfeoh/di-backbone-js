@@ -3,38 +3,21 @@ let plates = storage.plates;
 let cart = storage.cart;
 
 module.exports = [{
-    method: ['PUT', 'POST', 'OPTIONS'],  path:'/cart/{id}',
-    config: {
-        validate: {
-            params: (params, options, next) => {
-                let idExists = plates.find(plate => plate._id == params.id);
-                next(! idExists);
-            }
+        method: 'GET',  path:'/cartContents',
+        handler: function (request, reply) {
+            let cartContents = plates.filter(plate => cart.indexOf(plate._id) != -1);
+            return reply(JSON.stringify(cartContents));
         }
-    },
+}, {
+    method: ['PUT', 'POST'],  path:'/cart',
     handler: function (request, reply) {
-        cart.push(request.params.id);
-        return reply(request.params.id + ' added to the cart');
+        cart.push(request.payload._id);
+        return reply(request.payload._id + ' added to the cart');
     }
-},
-{
-    method: 'GET',  path:'/cart',
+}, {
+    method: 'DELETE',  path:'/cart',
     handler: function (request, reply) {
-        let cartContents = plates.filter(plate => cart.indexOf(plate._id) != -1);
-        return reply(JSON.stringify(cartContents));
-    }
-},
-{
-    method: 'DELETE',  path:'/cart/{id}',
-    config: {
-        validate: {
-            params: (params, options, next) => {
-                next(cart.indexOf(params.id) == -1);
-            }
-        }
-    },
-    handler: function (request, reply) {
-        cart.splice(cart.indexOf(request.params.id), 1);
-        return reply(request.params.id + ' removed from the cart');
+        cart.splice(cart.indexOf(request.payload._id), 1);
+        return reply(request.payload._id + ' removed from the cart');
     }
 }];

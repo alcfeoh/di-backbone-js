@@ -3,7 +3,7 @@ $(function() {
     var LicensePlate = Backbone.Model.extend({});
 
     var CartItem = Backbone.Model.extend({
-        url: 'http://localhost:8000/cart'
+        url: '/cart'
     });
 
     var LicensePlateView = Backbone.View.extend({
@@ -25,14 +25,14 @@ $(function() {
         addToCart: function(){
             console.log("Adding to cart "+ this.model.get('title'));
             debugger;
-            var cartItem = new CartItem(this.model);
+            var cartItem = new CartItem(this.model.attributes);
             cartItem.save();
         }
     });
 
     var LicensePlateList = Backbone.Collection.extend({
         model: LicensePlate,
-        url: 'http://localhost:8000/data'
+        url: '/data'
     });
 
     var plateList = new LicensePlateList();
