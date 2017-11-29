@@ -2,16 +2,10 @@ $(function() {
 
     var LicensePlate = Backbone.Model.extend({});
 
-    var CartItem = Backbone.Model.extend({
-        url: '/cart'
-    });
 
     var LicensePlateView = Backbone.View.extend({
         tagName:  "div",
         attributes: {class: 'col-md-4', style: 'margin-top: 40px'},
-        events: {
-            "click .btn": "addToCart"
-        },
         initialize: function () {
             this.render();
         },
@@ -21,11 +15,6 @@ $(function() {
             var html = template(this.model.toJSON());
             this.$el.html(html);
             return this;
-        },
-        addToCart: function(){
-            console.log("Adding to cart "+ this.model.get('title'));
-            var cartItem = new CartItem(this.model.attributes);
-            cartItem.save();
         }
     });
 
