@@ -7,7 +7,10 @@ const storage = require('./plates-storage');
 
 // Create a server with a host and port
 const server = new Hapi.Server({
-    debug: { request: ['error'] }
+    debug: { request: ['error'] },
+    connections: {
+        routes: {cors: true}
+    }
 });
 
 server.register({
@@ -33,7 +36,7 @@ server.route({
     path: '/{param*}',
     handler: {
         directory: {
-            path: 'lp-store-ui'
+            path: 'ui'
         }
     }
 });

@@ -3,7 +3,7 @@ let plates = storage.plates;
 let cart = storage.cart;
 
 module.exports = [{
-    method: 'PUT',  path:'/cart/{id}',
+    method: ['PUT', 'POST', 'OPTIONS'],  path:'/cart/{id}',
     config: {
         validate: {
             params: (params, options, next) => {
