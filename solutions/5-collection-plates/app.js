@@ -115,10 +115,9 @@ $(function() {
         },
         render: function () {
             this.collection.each((plate) => {
-                let model = new LicensePlateView({model: plate});
-                this.$el.append(model.render().el);
+                let view = new LicensePlateView({model: plate});
+                this.$el.append(view.render().el);
             });
-            return this;
         }
 
     });
