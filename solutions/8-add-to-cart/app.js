@@ -41,12 +41,15 @@ $(function() {
         el: "#container",
 
         initialize: function () {
-            this.listenTo(plateList, "add", this.addPlate);
+            this.listenTo(plateList, "sync", this.render);
             plateList.fetch();
         },
-        addPlate: function(plate) {
-            let model = new LicensePlateView({model: plate});
-            this.$el.append(model.render().el);
+        render: function () {
+            plateList.each((plate) => {
+                let model = new LicensePlateView({model: plate});
+                this.$el.append(model.render().el);
+            });
+            return this;
         }
 
     });
